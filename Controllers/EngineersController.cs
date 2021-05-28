@@ -25,7 +25,7 @@ namespace FactorySpace.Controllers
     public ActionResult Edit(int id)
     {
       var thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
-      ViewBag.MachineId = new SelectList(_db.Categories, "MachineId", "MachineName");
+      ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "MachineName");
       return View(thisEngineer);
     }
 
@@ -42,7 +42,7 @@ namespace FactorySpace.Controllers
     }
     public ActionResult Create()
     {
-      ViewBag.MachineId = new SelectList(_db.Categories, "MachineId", "MachineName");
+      ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "MachineName");
       return View();
     }
     [HttpPost]
@@ -84,7 +84,7 @@ namespace FactorySpace.Controllers
       public ActionResult AddMachine(int id)
     {
     var thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
-    ViewBag.MachineId = new SelectList(_db.Categories, "MachineId", "MachineName");
+    ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "MachineName");
     return View(thisEngineer);
     }
 

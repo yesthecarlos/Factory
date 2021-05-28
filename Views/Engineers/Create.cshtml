@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+
+@model FactorySpace.Models.Engineer
+
+<h4>Add a new engineer</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.EngineerName)
+    @Html.TextBoxFor(model => model.EngineerName)
+
+    @Html.Label("Select machine")
+    @Html.DropDownList("MachineId")
+
+    <input type="submit" value="Add new engineer" class="btn btn-default" />
+}
+<p>@Html.ActionLink("Show all engineers", "Index")</p>
