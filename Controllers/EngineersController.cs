@@ -42,18 +42,21 @@ namespace FactorySpace.Controllers
     }
     public ActionResult Create()
     {
+      // trimmedList = 
       ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "MachineName");
       return View();
     }
+    
     [HttpPost]
     public ActionResult Create(Engineer engineer, int MachineId)
     {
       _db.Engineers.Add(engineer);
       _db.SaveChanges();
       if (MachineId != 0)
-    {
+      {
         _db.MachineEngineer.Add(new MachineEngineer() { MachineId = MachineId, EngineerId = engineer.EngineerId });
-    }_db.SaveChanges();
+      }
+      _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
@@ -79,9 +82,9 @@ namespace FactorySpace.Controllers
         .ThenInclude(join => join.Machine)
         .FirstOrDefault(engineer => engineer.EngineerId == id);
       return View(thisEngineer);
-      }
+    }
       
-      public ActionResult AddMachine(int id)
+    public ActionResult AddMachine(int id)
     {
     var thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
     ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "MachineName");
