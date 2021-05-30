@@ -58,9 +58,10 @@ namespace Factory.Migrations
 
                     b.HasKey("MachineEngineerId");
 
-                    b.HasIndex("EngineerId");
-
                     b.HasIndex("MachineId");
+
+                    b.HasIndex("EngineerId", "MachineId")
+                        .IsUnique();
 
                     b.ToTable("MachineEngineer");
                 });

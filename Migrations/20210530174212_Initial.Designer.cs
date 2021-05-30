@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Factory.Migrations
 {
     [DbContext(typeof(FactorySpaceContext))]
-    [Migration("20210528205514_FixMachineIdColumn")]
-    partial class FixMachineIdColumn
+    [Migration("20210530174212_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -60,9 +60,10 @@ namespace Factory.Migrations
 
                     b.HasKey("MachineEngineerId");
 
-                    b.HasIndex("EngineerId");
-
                     b.HasIndex("MachineId");
+
+                    b.HasIndex("EngineerId", "MachineId")
+                        .IsUnique();
 
                     b.ToTable("MachineEngineer");
                 });
@@ -70,13 +71,13 @@ namespace Factory.Migrations
             modelBuilder.Entity("FactorySpace.Models.MachineEngineer", b =>
                 {
                     b.HasOne("FactorySpace.Models.Engineer", "Engineer")
-                        .WithMany("JoinEntities")
+                        .WithMany()
                         .HasForeignKey("EngineerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("FactorySpace.Models.Machine", "Machine")
-                        .WithMany("JoinEntities")
+                        .WithMany()
                         .HasForeignKey("MachineId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -84,16 +85,6 @@ namespace Factory.Migrations
                     b.Navigation("Engineer");
 
                     b.Navigation("Machine");
-                });
-
-            modelBuilder.Entity("FactorySpace.Models.Engineer", b =>
-                {
-                    b.Navigation("JoinEntities");
-                });
-
-            modelBuilder.Entity("FactorySpace.Models.Machine", b =>
-                {
-                    b.Navigation("JoinEntities");
                 });
 #pragma warning restore 612, 618
         }

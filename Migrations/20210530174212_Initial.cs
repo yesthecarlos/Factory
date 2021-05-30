@@ -40,8 +40,7 @@ namespace Factory.Migrations
                     MachineEngineerId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     EngineerId = table.Column<int>(type: "int", nullable: false),
-                    MachinedId = table.Column<int>(type: "int", nullable: false),
-                    MachineId = table.Column<int>(type: "int", nullable: true)
+                    MachineId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -57,13 +56,14 @@ namespace Factory.Migrations
                         column: x => x.MachineId,
                         principalTable: "Machines",
                         principalColumn: "MachineId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_MachineEngineer_EngineerId",
+                name: "IX_MachineEngineer_EngineerId_MachineId",
                 table: "MachineEngineer",
-                column: "EngineerId");
+                columns: new[] { "EngineerId", "MachineId" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_MachineEngineer_MachineId",

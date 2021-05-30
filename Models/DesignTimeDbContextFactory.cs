@@ -11,9 +11,9 @@ namespace FactorySpace.Models
     FactorySpaceContext IDesignTimeDbContextFactory<FactorySpaceContext>.CreateDbContext(string[] args)
     {
       IConfigurationRoot configuration = new ConfigurationBuilder()
-          .SetBasePath(Directory.GetCurrentDirectory())
-          .AddJsonFile("appsettings.json")
-          .Build();
+        .SetBasePath(Directory.GetCurrentDirectory())
+        .AddJsonFile("appsettings.json")
+        .Build();
 
       var builder = new DbContextOptionsBuilder<FactorySpaceContext>();
 
