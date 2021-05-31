@@ -13,7 +13,7 @@
     @Html.HiddenFor(model => model.EngineerId)
 
     @Html.LabelFor(model => model.EngineerName)
-    @Html.EditorFor(model => model.EngineerName)
+    @Html.EditorFor(model => model.EngineerName, new { @class = "text", required = "required" })
 
     @Html.Label("Select machine")
     @Html.DropDownList("MachineId")

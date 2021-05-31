@@ -15,6 +15,7 @@ namespace FactorySpace.Models
     
     [Display(Name="Machine Id")]
     public int MachineId { get; set; }
+
     [Display(Name="Machine Name")]
     public string MachineName { get; set; }
 
