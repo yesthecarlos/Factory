@@ -2,14 +2,16 @@
 using FactorySpace.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Factory.Migrations
 {
     [DbContext(typeof(FactorySpaceContext))]
-    partial class FactorySpaceContextModelSnapshot : ModelSnapshot
+    [Migration("20210531041153_MakeEngineerNameUnique")]
+    partial class MakeEngineerNameUnique
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,12 +42,9 @@ namespace Factory.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("MachineName")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("MachineId");
-
-                    b.HasIndex("MachineName")
-                        .IsUnique();
 
                     b.ToTable("Machines");
                 });
