@@ -14,7 +14,7 @@
 
 ## Description
 
-_This project uses C#, .NET 5, EF Core 5, MySQL, the MVC pattern, and a Code First approach to create an repair tracking app for a a hypothetical factory's machines. The app welcomes the user and allows them view and add machines and engineers and allows the user to assign engineers to machines and vice versa. It uses a compound key to prevent the same combination of engineer/machine from being entered more than once._
+_This project uses C#, .NET 5, EF Core 5, MySQL, the MVC pattern, and a Code First approach to create a repair tracking app for a hypothetical factory's machines. The app welcomes the user and allows them view and add machines and engineers and allows the user to assign engineers to machines and vice versa. It uses a compound key to prevent the same combination of engineer/machine from being entered more than once._
 
 
 ## Setup and Use
