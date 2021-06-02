@@ -14,7 +14,7 @@
 
 ## Description
 
-_This project uses C#, .NET 5, EF Core 5, MySQL and the MVC pattern to create an repair tracking app for a a hypothetical factory's machines.  The app welcomes the user and allows them view and add machines and engineers and allows the user to assign engineers to machines and vice versa. It uses a compound key to prevent the same combination of engineer/machine from being entered more than once._
+_This project uses C#, .NET 5, EF Core 5, MySQL, the MVC pattern, and a Code First approach to create an repair tracking app for a a hypothetical factory's machines. The app welcomes the user and allows them view and add machines and engineers and allows the user to assign engineers to machines and vice versa. It uses a compound key to prevent the same combination of engineer/machine from being entered more than once._
 
 
 ## Setup and Use
@@ -28,7 +28,16 @@ _This project uses C#, .NET 5, EF Core 5, MySQL and the MVC pattern to create an
 1. Clone the repository: `$ git clone https://github.com/yesthecarlos/Factory`
 2. Navigate to the `Factory/` directory on your computer
 3. Open with your preferred text editor to view the code base
-4. To run the web app:
+4. Create a file named appsettings.json and save it in the project's root directory. It should contain the following code:
+```c#
+{
+  "ConnectionStrings": 
+  {
+    "DefaultConnection": "Server=localhost;Port=3306;database=carlos_mendez;uid=[user];pwd=[password];"
+  }
+}
+```
+5. To run the web app:
     * Navigate to `Factory/` in your command line
     * Run the command `dotnet restore` to restore the dependencies that are listed in the .csproj
     * Run the commmand `dotnet build` to build the project and its dependencies into a set of binaries
